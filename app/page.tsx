@@ -64,7 +64,7 @@ export default function CinemaTechSitePreview() {
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-bold tracking-tight">About CinemaTech</h2>
             <p className="mt-4 text-neutral-700 leading-relaxed">
-              Founded by a veteran MSP consultant with 25+ years in IT, CinemaTech specializes in keeping cinema technology invisible to guests and painless for operators. We focus on practical reliability, clean installs, and documented processes that scale.
+              Founded by an experienced and respected consultant with 25+ years in IT, CinemaTech specializes in keeping cinema technology invisible to guests and painless for operators. We focus on practical reliability, clean installs, and documented processes that scale.
             </p>
             <ul className="mt-6 space-y-2 text-neutral-700">
               <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Project management that respects opening weekends</li>
