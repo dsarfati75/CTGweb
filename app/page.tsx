@@ -58,25 +58,7 @@ export default function CinemaTechSitePreview() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="scroll-mt-20 py-16 border-t border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Services</h2>
-            <p className="mt-2 text-neutral-600">Built for the unique cadence of cinema operations.</p>
-          </header>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <ServiceCard icon={<ServerIcon />} title="Remote Monitoring & Management" bullets={["24/7 alerts", "Patch orchestration", "Asset inventory & reporting"]} />
-            <ServiceCard icon={<ShieldIcon />} title="Endpoint Detection & Response" bullets={["EDR/MDR rollout", "Threat hunting", "Policy hardening"]} />
-            <ServiceCard icon={<NetworkIcon />} title="Network Cleanup & Design" bullets={["Rack remediation", "Wi-Fi tuning", "Firewall best practices"]} />
-            <ServiceCard icon={<CableIcon />} title="Lifecycle & Warranty" bullets={["EOL planning", "Warranty extensions", "Cost-avoidance strategy"]} />
-            <ServiceCard icon={<MailIcon />} title="Backup & Recovery" bullets={["Server backups", "Config snapshots", "Restore runbooks"]} />
-            <ServiceCard icon={<PhoneIcon />} title="On-call & Projects" bullets={["Go-live coverage", "POS migrations", "On-prem server migrations", "Vendor management"]} />
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
+      {/* ABOUT (moved above Services) */}
       <section id="about" className="scroll-mt-20 py-16 border-t border-neutral-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
@@ -104,7 +86,25 @@ export default function CinemaTechSitePreview() {
         </div>
       </section>
 
-      {/* CONTACT (email only) */}
+      {/* SERVICES */}
+      <section id="services" className="scroll-mt-20 py-16 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <header className="mb-8">
+            <h2 className="text-3xl font-bold tracking-tight">Services</h2>
+            <p className="mt-2 text-neutral-600">Built for the unique cadence of cinema operations.</p>
+          </header>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <ServiceCard icon={<ServerIcon />} title="Remote Monitoring & Management" bullets={["24/7 alerts", "Patch orchestration", "Asset inventory & reporting"]} />
+            <ServiceCard icon={<ShieldIcon />} title="Endpoint Detection & Response" bullets={["EDR/MDR rollout", "Threat hunting", "Policy hardening"]} />
+            <ServiceCard icon={<NetworkIcon />} title="Network Cleanup & Design" bullets={["Rack remediation", "Wi-Fi tuning", "Firewall best practices"]} />
+            <ServiceCard icon={<CableIcon />} title="Lifecycle & Warranty" bullets={["EOL planning", "Warranty extensions", "Cost-avoidance strategy"]} />
+            <ServiceCard icon={<MailIcon />} title="Backup & Recovery" bullets={["Server backups", "Config snapshots", "Restore runbooks"]} />
+            <ServiceCard icon={<PhoneIcon />} title="On-call & Projects" bullets={["Go-live coverage", "POS migrations", "On-prem server migrations", "Vendor management"]} />
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
       <section id="contact" className="scroll-mt-20 py-16 border-t border-neutral-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold tracking-tight">Let’s talk</h2>
@@ -115,7 +115,6 @@ export default function CinemaTechSitePreview() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="py-8 border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm text-neutral-600">© {new Date().getFullYear()} CinemaTech. All rights reserved.</div>
@@ -172,15 +171,10 @@ function Fact({ label, value }: { label: string; value: string }) {
   );
 }
 
-/* --- Inline Icons (no external deps) --- */
+/* Icons */
 function CheckIcon({ className = "w-5 h-5" }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-  );
-}
-function ArrowRight({ className = "w-4 h-4" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
   );
 }
 function ServerIcon({ className = "w-5 h-5" }) {
