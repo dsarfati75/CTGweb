@@ -59,7 +59,7 @@ export default function CinemaTechSitePreview() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-16 border-t border-neutral-200">
+      <section id="services" className="scroll-mt-20 py-16 border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="mb-8">
             <h2 className="text-3xl font-bold tracking-tight">Services</h2>
@@ -77,7 +77,7 @@ export default function CinemaTechSitePreview() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-16 border-t border-neutral-200">
+      <section id="about" className="scroll-mt-20 py-16 border-t border-neutral-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-bold tracking-tight">About CinemaTech</h2>
@@ -105,7 +105,7 @@ export default function CinemaTechSitePreview() {
       </section>
 
       {/* CONTACT (email only) */}
-      <section id="contact" className="py-16 border-t border-neutral-200 bg-white">
+      <section id="contact" className="scroll-mt-20 py-16 border-t border-neutral-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold tracking-tight">Let’s talk</h2>
           <p className="mt-4 text-neutral-600">
