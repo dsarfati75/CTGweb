@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Header from "../components/Header"; // ← components is at repo root
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
   title: "CinemaTech",
@@ -13,10 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body>
         <Header />
-        {children}
+        {/* pad content so it starts below the fixed 64px header */}
+        <div className="pt-16">{children}</div>
       </body>
     </html>
   );
