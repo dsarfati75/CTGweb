@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-neutral-200 shadow-sm">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-neutral-200 shadow-sm">
       <div className="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center">
-        <Link href="/" className="inline-flex items-center">
+        <Link href="/" className="inline-flex items-center" aria-label="CinemaTech Home">
           <Image
             src="/cinematech-logo.png"
             alt="CinemaTech"
