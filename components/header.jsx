@@ -15,15 +15,15 @@ export default function Header() {
       {/* Logo */}
       <Link href="/" style={{ display: "inline-flex", alignItems: "center" }}>
         <Image
-          src="/cinematech-logo.png" // Make sure this file is in /public
+          src="/cinematech-logo.png" // ✅ exact working path
           alt="CinemaTech"
-          width={240} // adjust width to fit your header
-          height={48} // matches logo height
+          width={240}                 // adjust as needed
+          height={48}                  // matches logo height
           priority
         />
       </Link>
 
-      {/* Optional nav links */}
+      {/* Example nav links - adjust or remove as needed */}
       <nav style={{ marginLeft: "auto", display: "flex", gap: "1rem" }}>
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
