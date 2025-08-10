@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect } from "react";
 
-// Paste your FULL data URI into data/cinematech_logo_datauri_full.txt, then run: npm run prepare-logo
-const LOGO_DATA_URI = "data:image/jpeg;base64,REPLACE_WITH_FULL_BASE64_STRING";
-
 export default function CinemaTechSitePreview() {
   const style = {
     "--brand-primary": "#004080",
@@ -13,20 +10,6 @@ export default function CinemaTechSitePreview() {
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900" style={style}>
-      {/* NAV */}
-      <header className="sticky top-0 z-40 backdrop-blur border-b border-neutral-200/70 bg-white/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
-            <img src={LOGO_DATA_URI} alt="CinemaTech" className="h-10 w-auto object-contain" />
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#services" className="hover:text-[var(--brand-primary)]">Services</a>
-            <a href="#about" className="hover:text-[var(--brand-primary)]">About</a>
-            <a href="#contact" className="hover:text-[var(--brand-primary)]">Contact</a>
-          </nav>
-        </div>
-      </header>
-
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-soft)] to-transparent"/>
@@ -240,7 +223,6 @@ function PhoneIcon({ className = "w-5 h-5" }) {
 function SmokeTests() {
   useEffect(() => {
     const tests: Array<[string, boolean]> = [
-      ["Embedded logo present", !!document.querySelector("img[alt='CinemaTech']")],
       ["On-prem bullet present", document.body.textContent?.includes("On-prem server migrations") === true],
       ["Devices copy present", document.body.textContent?.includes("All of your critical devices") === true],
       ["Services section exists", !!document.getElementById("services")],
