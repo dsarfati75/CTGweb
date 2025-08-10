@@ -8,26 +8,39 @@ export default function Header() {
   const [active, setActive] = React.useState<string>("home");
   const [open, setOpen] = React.useState(false);
 
-  // --- Scrollspy (highlights Home, About, Services, Contact) ---
   React.useEffect(() => {
-    const headerH = 64; // px
+    const headerH = 64; // fixed header height
     const ids = ["about", "services", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
 
     const computeActive = () => {
+      // current scroll position adjusted for header height
       const y = window.scrollY + headerH + 1;
-      // If we're above the first section, highlight home
+
+      // If above first section (minus its scroll-margin), highlight home
       const first = sections[0];
-      if (!first || y < first.offsetTop) {
+      if (first) {
+        const firstMargin =
+          parseFloat(getComputedStyle(first).scrollMarginTop || "0") || 0;
+        const firstTopEffective = first.offsetTop - firstMargin;
+        if (y < firstTopEffective) {
+          setActive("home");
+          return;
+        }
+      } else {
         setActive("home");
         return;
       }
-      // Find the last section whose top is above the current y
+
+      // Otherwise, pick the LAST section whose (offsetTop - scrollMarginTop) is above y
       let current: string = "home";
       for (const sec of sections) {
-        if (y >= sec.offsetTop) current = sec.id;
+        const margin =
+          parseFloat(getComputedStyle(sec).scrollMarginTop || "0") || 0;
+        const topEffective = sec.offsetTop - margin;
+        if (y >= topEffective) current = sec.id;
       }
       setActive(current);
     };
@@ -43,7 +56,6 @@ export default function Header() {
     };
   }, []);
 
-  // Close mobile menu when navigating
   const handleNavClick = () => setOpen(false);
 
   const linkClass = (id: string) =>
@@ -104,7 +116,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu panel */}
+      {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2 text-sm">
