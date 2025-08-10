@@ -67,9 +67,9 @@ export default function CinemaTechSitePreview() {
               Founded by an experienced and respected consultant with 25+ years in IT, CinemaTech specializes in keeping cinema technology invisible to guests and painless for operators. We focus on practical reliability, clean installs, and documented processes that scale.
             </p>
             <ul className="mt-6 space-y-2 text-neutral-700">
-              <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Project management that respects opening weekends</li>
+              <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Project management that respects your business objectives</li>
               <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Vendor wrangling so you don’t have to</li>
-              <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Clear reporting, no black boxes</li>
+              <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5"/> Clear reporting</li>
             </ul>
           </div>
           <div className="lg:col-span-1">
