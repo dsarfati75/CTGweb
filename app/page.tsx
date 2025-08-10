@@ -10,6 +10,95 @@ export default function CinemaTechSitePreview() {
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900" style={style}>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "CinemaTech Group",
+            "url": "https://www.cinematechgroup.com/",
+            "logo": "https://www.cinematechgroup.com/logo.png",
+            "sameAs": [
+              "https://www.linkedin.com/company/cinematech-group",
+              "https://www.facebook.com/cinematechgroup"
+            ]
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "CinemaTech Services",
+            "itemListElement": [
+              {
+                "@type": "Service",
+                "name": "Remote Monitoring & Management (RMM)",
+                "areaServed": "United States",
+                "audience": "Independent cinema operators",
+                "description": "24/7 monitoring and alerting, OS & app patching, asset reporting."
+              },
+              {
+                "@type": "Service",
+                "name": "Endpoint Detection & Response (EDR/MDR)",
+                "areaServed": "United States",
+                "audience": "Independent cinema operators",
+                "description": "Modern threat detection, policy hardening, and incident response."
+              },
+              {
+                "@type": "Service",
+                "name": "Backup & Recovery",
+                "areaServed": "United States",
+                "audience": "Independent cinema operators",
+                "description": "Server backups, configuration snapshots, and restore runbooks."
+              }
+            ]
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        // @ts-ignore
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Why do independent cinemas need RMM and EDR?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "With lean IT budgets, independent cinemas are prime targets for malware and ransomware. RMM and EDR reduce downtime and risk by proactively patching, monitoring, and responding to threats."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do you support POS and on-prem servers?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. We monitor servers and POS endpoints, track warranties, and plan lifecycle refreshes before end of life."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What’s included in backup and recovery?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We configure server backups and configuration snapshots, validate restores, and maintain runbooks for quick recovery."
+                }
+              }
+            ]
+          }),
+        }}
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-soft)] to-transparent"/>
