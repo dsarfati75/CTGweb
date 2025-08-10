@@ -17,9 +17,9 @@ export default function Header() {
 
         <nav className="ml-auto hidden md:flex items-center gap-6 text-sm">
           <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/#about">About</Link>
+          <Link href="/#services">Services</Link>
+          <Link href="/#contact">Contact</Link>
         </nav>
       </div>
     </header>
