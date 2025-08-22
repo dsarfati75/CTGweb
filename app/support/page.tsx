@@ -40,37 +40,71 @@ export default function Support() {
 />
 
         {/* Zoho CSS (global so their form renders correctly) */}
-        <style jsx global>{`
-          #zohoSupportWebToCase textarea,
-          #zohoSupportWebToCase input[type='text'],
-          #zohoSupportWebToCase input[type='date'],
-          #zohoSupportWebToCase select,
-          .wb_common { width: 280px; }
-          #zohoSupportWebToCase td { padding: 11px 5px; }
-          #zohoSupportWebToCase textarea,
-          #zohoSupportWebToCase input[type='text'],
-          #zohoSupportWebToCase input[type='date'],
-          #zohoSupportWebToCase select { border: 1px solid #ddd; padding: 3px 5px; border-radius: 3px; }
-          #zohoSupportWebToCase select { box-sizing: unset; }
-          #zohoSupportWebToCase .wb_selectDate { width: auto; }
-          #zohoSupportWebToCase input.wb_cusInput { width: 108px; }
-          .wb_FtCon { display:flex; align-items:center; justify-content:flex-end; margin-top:15px; padding-left:10px; }
-          .wb_logoCon { display:flex; margin-left:5px; }
-          .wb_logo { max-width:16px; max-height:16px; }
-          #zohoSupportWebToCase .wb_multi_pick { border:1px solid #ddd; padding:3px 5px; border-radius:3px; width:280px; height:95px; overflow-y:auto; }
-          #zohoSupportWebToCase .wb_multi_pick_label { display:block; }
-          #zohoSupportWebToCase .wb_multi_pick_input, .wb_multi_pick_input_all { vertical-align:middle; margin-right:5px; }
-          .zsFormClass { background-color:#FFFFFF; width:600px; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
-          .zsFontClass { color:#000000; font-family:Arial; font-size:13px; vertical-align:top; }
-          .manfieldbdr { border-left:1px solid #ff6448 !important; }
-          input[type=file]::-webkit-file-upload-button { cursor:pointer; }
-          .wtcuploadinput { cursor:pointer; float:left; width:62px; margin-top:-20px; opacity:0; clear:both; }
-          .filenamecls { margin-right:15px; float:left; margin-top:5px; }
-          .clboth { clear:both; }
-          #zsFileBrowseAttachments { clear:both; margin:5px 0 10px; }
-          #tooltip-zc { font: normal 12px Arial, Helvetica, sans-serif; line-height:18px; position:absolute; padding:8px; margin:20px 0 0; background:#fff; border:1px solid #528dd1; border-radius:5px; color:#777; box-shadow:5px 5px 20px rgba(0,0,0,0.2); z-index:10000; }
-          #zsCloudAttachmentIframe { width:100%; height:100%; z-index:99999 !important; position:fixed; left:0; top:0; border-style:none; display:none; background-color:#fff; }
-        `}</style>
+       <style jsx global>{`
+  /* --- existing rules ... --- */
+
+  /* Make "Attach files" look like a button */
+  #zohoSupportWebToCase #zsBrowseAttachment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f9fafb;
+    font-weight: 600;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+  #zohoSupportWebToCase #zsBrowseAttachment:hover {
+    background: #f3f4f6;
+  }
+
+  /* Keep Zoho's hidden inputs invisible; click is forwarded by our script */
+  #zohoSupportWebToCase .wtcuploadinput {
+    width: 62px; /* keep their size so their logic still works */
+    opacity: 0;
+  }
+
+  /* Chips for selected filenames */
+  #zohoSupportWebToCase .filenamecls {
+    padding: 4px 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #fafafa;
+  }
+
+  /* Buttons */
+  #zohoSupportWebToCase input[type='submit'] {
+    background: #0f172a; /* slate-900 */
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #zohoSupportWebToCase input[type='submit']:hover {
+    filter: brightness(1.05);
+  }
+  #zohoSupportWebToCase input[type='button'] {
+    background: #e5e7eb; /* neutral-200 */
+    color: #111827;
+    border: 1px solid #d1d5db;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #zohoSupportWebToCase input[type='button']:hover {
+    background: #eaeaea;
+  }
+
+  /* Give the attachment helper text a lighter tone */
+  #zohoSupportWebToCase #zsMaxSizeMessage,
+  #zohoSupportWebToCase #zsMaxLimitMessage {
+    color: #6b7280 !important; /* neutral-500 */
+  }
+`}</style>
+
 
         {/* Raw form HTML */}
         <div
@@ -142,4 +176,5 @@ export default function Support() {
     </main>
   );
 }
+
 
