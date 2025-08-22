@@ -1,9 +1,15 @@
 // app/support/page.tsx
 "use client";
 
+import React from "react";
 import Script from "next/script";
 
 export default function Support() {
+  // 👇 this runs once when the page mounts
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
+
   return (
     <main className="min-h-screen bg-neutral-50">
       <section className="max-w-4xl mx-auto px-4 py-10">
@@ -11,6 +17,9 @@ export default function Support() {
         <p className="text-neutral-600 mb-6">
           Tell us what’s going on and we’ll jump on it.
         </p>
+
+        {/* ...rest of your Zoho form and scripts... */}
+
 
         {/* Zoho library (jQuery + encoder) */}
         <Script
@@ -185,6 +194,7 @@ export default function Support() {
     </main>
   );
 }
+
 
 
 
