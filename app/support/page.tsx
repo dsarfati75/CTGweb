@@ -21,12 +21,23 @@ export default function Support() {
 
         {/* Your inline Zoho helper script */}
         <Script
-          id="zoho-inline"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `/* (same inline Zoho script you already pasted) */`,
-          }}
-        />
+  id="ctg-attach-click"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: `
+      // Make the "Attach files" text act like a real button
+      document.addEventListener('click', function(e){
+        var t = e.target;
+        if (t && t.id === 'zsBrowseAttachment') {
+          var inputs = Array.from(document.querySelectorAll('#zohoSupportWebToCase .wtcuploadinput'));
+          // Use the first currently visible file input, else fall back to the first
+          var current = inputs.find(function(el){ return window.getComputedStyle(el).display !== 'none'; }) || inputs[0];
+          if (current) current.click();
+        }
+      });
+    `,
+  }}
+/>
 
         {/* Zoho CSS (global so their form renders correctly) */}
         <style jsx global>{`
@@ -131,3 +142,4 @@ export default function Support() {
     </main>
   );
 }
+
