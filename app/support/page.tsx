@@ -25,7 +25,7 @@ export default function Support() {
           strategy="afterInteractive"
         />
 
-        {/* Zoho inline script (latest from your snippet, includes CAPTCHA support) */}
+        {/* Zoho inline script (from your latest embed; includes CAPTCHA logic) */}
         <Script
           id="zoho-inline"
           strategy="afterInteractive"
@@ -46,29 +46,12 @@ export default function Support() {
                   isError = 0;
                   var fieldObject = document.forms['zsWebToCase_1146316000000362410'][zsWebFormMandatoryFields[index]];
                   if(fieldObject){
-                    if(((fieldObject.value).replace(/^\\s+|\\s+$/g, '')).length == 0){
-                      alert(zsFieldsDisplayLabelArray[index] +' cannot be empty ');
-                      fieldObject.focus(); return false;
-                    } else {
-                      if(fieldObject.name == 'Email'){
-                        if(!fieldObject.value.match(/^([\\w_][\\w\\-_.+\\'&]*)@(?=.{4,256}$)(([\\w]+)([\\-_]*[\\w])*[\\.])+[a-zA-Z]{2,22}$/)){
-                          alert('Enter a valid email-Id'); fieldObject.focus(); return false;
-                        }
-                      }
-                    }
-                    if(fieldObject.nodeName == 'SELECT'){
-                      if(fieldObject.options[fieldObject.selectedIndex].value == '-None-'){
-                        alert(zsFieldsDisplayLabelArray[index] +' cannot be none'); fieldObject.focus(); return false;
-                      }
-                    }
-                    if(fieldObject.type == 'checkbox'){
-                      if (fieldObject.checked == false){
-                        alert('Please accept '+zsFieldsDisplayLabelArray[index]); fieldObject.focus(); return false;
-                      }
-                    }
+                    if(((fieldObject.value).replace(/^\\s+|\\s+$/g, '')).length == 0){ alert(zsFieldsDisplayLabelArray[index] +' cannot be empty '); fieldObject.focus(); return false; }
+                    else { if(fieldObject.name == 'Email'){ if(!fieldObject.value.match(/^([\\w_][\\w\\-_.+\\'&]*)@(?=.{4,256}$)(([\\w]+)([\\-_]*[\\w])*[\\.])+[a-zA-Z]{2,22}$/)){ alert('Enter a valid email-Id'); fieldObject.focus(); return false; } } }
+                    if(fieldObject.nodeName == 'SELECT'){ if(fieldObject.options[fieldObject.selectedIndex].value == '-None-'){ alert(zsFieldsDisplayLabelArray[index] +' cannot be none'); fieldObject.focus(); return false; } }
+                    if(fieldObject.type == 'checkbox'){ if (fieldObject.checked == false){ alert('Please accept '+zsFieldsDisplayLabelArray[index]); fieldObject.focus(); return false; } }
                   }
                 }
-                // NEW: enforce captcha filled
                 if(document.forms['zsWebToCase_1146316000000362410']['zsWebFormCaptchaWord'].value.replace(/^\\s+|\\s+$/g, '').length == 0){
                   alert('Please enter the captcha code.');
                   document.forms['zsWebToCase_1146316000000362410']['zsWebFormCaptchaWord'].focus();
@@ -89,7 +72,6 @@ export default function Support() {
               function zsRearrangeFileBrowseAttachments(){jQuery.each(jQuery('input[type = file]'), function(fileIndex, fileObject){fileIndex = fileIndex + 1;if(fileIndex == zsAttachmentFileBrowserIdsList[0]){jQuery('#zsattachment_'+fileIndex).show();}else{jQuery('#zsattachment_'+fileIndex).hide();}});}
               function zsOpenFileBrowseAttachment(clickEvent){if(zsAttachedAttachmentsCount >= 5){clickEvent.preventDefault();}}
               function zsChangeMousePointer(){if(zsAttachedAttachmentsCount >= 5){jQuery('#zsMaxLimitMessage').show();jQuery('#zsattachment_1,#zsattachment_2,#zsattachment_3,#zsattachment_4,#zsattachment_5').hide();jQuery('#zsBrowseAttachment,#zsCloudAttachment').css('cursor', 'default');}else{jQuery('#zsMaxLimitMessage').hide();zsRearrangeFileBrowseAttachments();jQuery('#zsBrowseAttachment,#zsCloudAttachment').css('cursor', 'pointer');}}
-              // CAPTCHA
               function zsShowCaptcha(){jQuery('#zsCaptchaLoading').hide();jQuery('#zsCaptcha').show();}
               function zsRegenerateCaptcha(){
                 var webFormxhr = new XMLHttpRequest();
@@ -147,7 +129,33 @@ export default function Support() {
           }}
         />
 
-        {/* Make "Attach files" act like a real button (click forwards to the current hidden input) */}
+        {/* Kick CAPTCHA after mount, and show a friendly retry if image fails */}
+        <Script
+          id="ctg-kick-captcha"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              setTimeout(function () {
+                if (window.zsRegenerateCaptcha) window.zsRegenerateCaptcha();
+              }, 150);
+
+              (function(){
+                var img = document.getElementById('zsCaptchaUrl');
+                if (!img) return;
+                img.addEventListener('error', function(){
+                  var loading = document.getElementById('zsCaptchaLoading');
+                  if (loading) {
+                    loading.innerHTML = '<span style="color:#b91c1c">Couldn\\'t load CAPTCHA.</span> <a href="#" id="ctgRetry">Retry</a>';
+                    var r = document.getElementById('ctgRetry');
+                    if (r) r.addEventListener('click', function(e){ e.preventDefault(); if (window.zsRegenerateCaptcha) window.zsRegenerateCaptcha(); });
+                  }
+                });
+              })();
+            `,
+          }}
+        />
+
+        {/* Make "Attach files" act like a real button */}
         <Script
           id="ctg-attach-click"
           strategy="afterInteractive"
@@ -174,7 +182,6 @@ export default function Support() {
               (function(){
                 var form = document.getElementById('zsWebToCase_1146316000000362410');
                 if (!form) return;
-                // If our hidden field gets filled, block the submit.
                 form.addEventListener('submit', function(e){
                   var trap = document.getElementById('ctg_website');
                   if (trap && trap.value) { e.preventDefault(); e.stopPropagation(); alert('Submission blocked. Please try again.'); }
@@ -184,7 +191,7 @@ export default function Support() {
           }}
         />
 
-        {/* Global styles: Zoho base + your polish (includes buttons & captcha tidy-up) */}
+        {/* Global styles (Zoho base + your polish + captcha tidy-up) */}
         <style jsx global>{`
           #zohoSupportWebToCase textarea,
           #zohoSupportWebToCase input[type='text'],
@@ -248,7 +255,7 @@ export default function Support() {
           #zohoSupportWebToCase #zsCaptcha a { margin-left: 10px; }
         `}</style>
 
-        {/* Raw form HTML (Zoho markup with CAPTCHA + a honeypot field) */}
+        {/* Raw form HTML (with honeypot) */}
         <div
           id="zohoSupportWebToCase"
           className="bg-white rounded-2xl p-6 text-center"
@@ -263,7 +270,7 @@ export default function Support() {
   <input type="hidden" id="dependent_field_values_Cases" value="&#x7b;&quot;JSON_VALUES&quot;&#x3a;&#x7b;&#x7d;,&quot;JSON_SELECT_VALUES&quot;&#x3a;&#x7b;&#x7d;,&quot;JSON_MAP_DEP_LABELS&quot;&#x3a;&#x5b;&#x5d;&#x7d;"/>
   <input type='hidden' name='returnURL' value='https://cinematechgroup.com/support'/>
 
-  <!-- Honeypot (hidden) -->
+  <!-- Honeypot -->
   <input type="text" name="ctg_website" id="ctg_website" style="display:none" tabindex="-1" autocomplete="off" />
 
   <table border='0' cellspacing='0' class='zsFormClass' style="margin:0 auto;">
