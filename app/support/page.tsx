@@ -5,7 +5,7 @@ import React from "react";
 import Script from "next/script";
 
 export default function Support() {
-  // 👇 this runs once when the page mounts
+  // Scroll to top on mount
   React.useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -18,9 +18,6 @@ export default function Support() {
           Tell us what’s going on and we’ll jump on it.
         </p>
 
-        {/* ...rest of your Zoho form and scripts... */}
-
-
         {/* Zoho library (jQuery + encoder) */}
         <Script
           id="zoho-lib"
@@ -28,103 +25,234 @@ export default function Support() {
           strategy="afterInteractive"
         />
 
-        {/* Your inline Zoho helper script */}
-     <Script
-  id="ctg-attach-click"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-      document.addEventListener('click', function(e){
-        var t = e.target;
-        if (t && t.id === 'zsBrowseAttachment') {
-          var inputs = Array.from(document.querySelectorAll('#zohoSupportWebToCase .wtcuploadinput'));
-          var current = inputs.find(function(el){ return window.getComputedStyle(el).display !== 'none'; }) || inputs[0];
-          if (current) current.click();
-        }
-      });
-    `,
-  }}
-/>
+        {/* Your inline Zoho helper script (attach files button) */}
+        <Script
+          id="ctg-attach-click"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('click', function(e){
+                var t = e.target;
+                if (t && t.id === 'zsBrowseAttachment') {
+                  var inputs = Array.from(document.querySelectorAll('#zohoSupportWebToCase .wtcuploadinput'));
+                  var current = inputs.find(function(el){ return window.getComputedStyle(el).display !== 'none'; }) || inputs[0];
+                  if (current) current.click();
+                }
+              });
+            `,
+          }}
+        />
 
+        {/* Honeypot bot trap */}
+        <Script
+          id="ctg-honeypot"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                var form = document.getElementById('zsWebToCase_1146316000000362410');
+                if (!form) return;
+                form.addEventListener('submit', function(e){
+                  var trap = document.getElementById('ctg_website');
+                  if (trap && trap.value) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    alert('Spam submission blocked.');
+                    try { console.warn('Honeypot triggered:', trap.value); } catch(_) {}
+                  }
+                }, true);
+              })();
+            `,
+          }}
+        />
 
         {/* Zoho CSS (global so their form renders correctly) */}
-<style jsx global>{`
-  /* === Zoho's base styles (kept) === */
-  #zohoSupportWebToCase textarea,
-  #zohoSupportWebToCase input[type='text'],
-  #zohoSupportWebToCase input[type='date'],
-  #zohoSupportWebToCase select,
-  .wb_common { width: 280px; }
-  #zohoSupportWebToCase td { padding: 11px 5px; }
-  #zohoSupportWebToCase textarea,
-  #zohoSupportWebToCase input[type='text'],
-  #zohoSupportWebToCase input[type='date'],
-  #zohoSupportWebToCase select {
-    border: 1px solid #ddd; padding: 8px 10px; border-radius: 6px; /* a little taller */
-  }
-  #zohoSupportWebToCase select { box-sizing: unset; }
-  #zohoSupportWebToCase .wb_selectDate { width: auto }
-  #zohoSupportWebToCase input.wb_cusInput { width: 108px }
-  .wb_FtCon{ display:flex; align-items:center; justify-content:flex-end; margin-top:15px; padding-left:10px }
-  .wb_logoCon{ display:flex; margin-left:5px }
-  .wb_logo{ max-width:16px; max-height:16px }
-  #zohoSupportWebToCase .wb_multi_pick {
-    border: 1px solid #ddd; padding: 3px 5px; border-radius: 3px; width: 280px; height: 95px; overflow-y:auto;
-  }
-  #zohoSupportWebToCase .wb_multi_pick_label { display:block; }
-  #zohoSupportWebToCase .wb_multi_pick_input,  .wb_multi_pick_input_all{ vertical-align: middle; margin-right: 5px; }
-  .zsFormClass{ background-color:#FFFFFF; width:600px; border-radius:1rem; box-shadow:0 10px 30px rgba(0,0,0,0.06) }
-  .zsFontClass{ color:#000000; font-family:Arial; font-size:13px; vertical-align:top }
-  .manfieldbdr{ border-left: 1px solid #ff6448!important }
-  input[type=file]::-webkit-file-upload-button{ cursor:pointer; }
-  .wtcuploadinput{ cursor:pointer; float:left; width:62px; margin-top:-20px; opacity:0; clear:both; }
-  .filenamecls{ margin-right:15px; float:left; margin-top:5px; }
-  .clboth{ clear:both; }
-  #zsFileBrowseAttachments{ clear:both; margin:5px 0 10px; }
-  #tooltip-zc{
-    font: normal 12px Arial, Helvetica, sans-serif; line-height:18px; position:absolute; padding:8px; margin:20px 0 0;
-    background:#fff; border:1px solid #528dd1; border-radius:5px; color:#777;
-    box-shadow:5px 5px 20px rgba(0,0,0,0.2); z-index:10000;
-  }
-  #zsCloudAttachmentIframe{ width:100%; height:100%; z-index:99999!important; position:fixed; left:0; top:0; border-style:none; display:none; background-color:#fff; }
+        <style jsx global>{`
+          /* === Zoho's base styles (kept) === */
+          #zohoSupportWebToCase textarea,
+          #zohoSupportWebToCase input[type='text'],
+          #zohoSupportWebToCase input[type='date'],
+          #zohoSupportWebToCase select,
+          .wb_common {
+            width: 280px;
+          }
+          #zohoSupportWebToCase td {
+            padding: 11px 5px;
+          }
+          #zohoSupportWebToCase textarea,
+          #zohoSupportWebToCase input[type='text'],
+          #zohoSupportWebToCase input[type='date'],
+          #zohoSupportWebToCase select {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            border-radius: 6px; /* a little taller */
+          }
+          #zohoSupportWebToCase select {
+            box-sizing: unset;
+          }
+          #zohoSupportWebToCase .wb_selectDate {
+            width: auto;
+          }
+          #zohoSupportWebToCase input.wb_cusInput {
+            width: 108px;
+          }
+          .wb_FtCon {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 15px;
+            padding-left: 10px;
+          }
+          .wb_logoCon {
+            display: flex;
+            margin-left: 5px;
+          }
+          .wb_logo {
+            max-width: 16px;
+            max-height: 16px;
+          }
+          #zohoSupportWebToCase .wb_multi_pick {
+            border: 1px solid #ddd;
+            padding: 3px 5px;
+            border-radius: 3px;
+            width: 280px;
+            height: 95px;
+            overflow-y: auto;
+          }
+          #zohoSupportWebToCase .wb_multi_pick_label {
+            display: block;
+          }
+          #zohoSupportWebToCase .wb_multi_pick_input,
+          #zohoSupportWebToCase .wb_multi_pick_input_all {
+            vertical-align: middle;
+            margin-right: 5px;
+          }
+          .zsFormClass {
+            background-color: #ffffff;
+            width: 600px;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+          }
+          .zsFontClass {
+            color: #000000;
+            font-family: Arial;
+            font-size: 13px;
+            vertical-align: top;
+          }
+          .manfieldbdr {
+            border-left: 1px solid #ff6448 !important;
+          }
+          input[type='file']::-webkit-file-upload-button {
+            cursor: pointer;
+          }
+          .wtcuploadinput {
+            cursor: pointer;
+            float: left;
+            width: 62px;
+            margin-top: -20px;
+            opacity: 0;
+            clear: both;
+          }
+          .filenamecls {
+            margin-right: 15px;
+            float: left;
+            margin-top: 5px;
+          }
+          .clboth {
+            clear: both;
+          }
+          #zsFileBrowseAttachments {
+            clear: both;
+            margin: 5px 0 10px;
+          }
+          #tooltip-zc {
+            font: normal 12px Arial, Helvetica, sans-serif;
+            line-height: 18px;
+            position: absolute;
+            padding: 8px;
+            margin: 20px 0 0;
+            background: #fff;
+            border: 1px solid #528dd1;
+            border-radius: 5px;
+            color: #777;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+          }
+          #zsCloudAttachmentIframe {
+            width: 100%;
+            height: 100%;
+            z-index: 99999 !important;
+            position: fixed;
+            left: 0;
+            top: 0;
+            border-style: none;
+            display: none;
+            background-color: #fff;
+          }
 
-  /* === CinemaTech polish === */
-  /* Make "Attach files" act & look like a proper button */
-  #zohoSupportWebToCase #zsBrowseAttachment {
-    display:inline-flex; align-items:center; justify-content:center;
-    padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 10px;
-    background: #f9fafb; font-weight: 600; margin-bottom: 8px; user-select: none;
-  }
-  #zohoSupportWebToCase #zsBrowseAttachment:hover { background:#f3f4f6; }
+          /* === CinemaTech polish === */
+          /* Make "Attach files" act & look like a proper button */
+          #zohoSupportWebToCase #zsBrowseAttachment {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #f9fafb;
+            font-weight: 600;
+            margin-bottom: 8px;
+            user-select: none;
+          }
+          #zohoSupportWebToCase #zsBrowseAttachment:hover {
+            background: #f3f4f6;
+          }
 
-  /* File name “chips” */
-  #zohoSupportWebToCase .filenamecls {
-    padding: 4px 8px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fafafa;
-  }
+          /* File name “chips” */
+          #zohoSupportWebToCase .filenamecls {
+            padding: 4px 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: #fafafa;
+          }
 
-  /* Buttons */
-  #zohoSupportWebToCase input[type='submit']{
-    background: var(--brand-primary, #0f172a); color:#fff; border:none;
-    padding:10px 16px; border-radius:10px; cursor:pointer;
-  }
-  #zohoSupportWebToCase input[type='submit']:hover{ filter:brightness(1.05); }
-  #zohoSupportWebToCase input[type='button']{
-    background:#e5e7eb; color:#111827; border:1px solid #d1d5db;
-    padding:10px 16px; border-radius:10px; cursor:pointer;
-  }
-  #zohoSupportWebToCase input[type='button']:hover{ background:#eaeaea; }
+          /* Buttons */
+          #zohoSupportWebToCase input[type='submit'] {
+            background: var(--brand-primary, #0f172a);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+          }
+          #zohoSupportWebToCase input[type='submit']:hover {
+            filter: brightness(1.05);
+          }
+          #zohoSupportWebToCase input[type='button'] {
+            background: #e5e7eb;
+            color: #111827;
+            border: 1px solid #d1d5db;
+            padding: 10px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+          }
+          #zohoSupportWebToCase input[type='button']:hover {
+            background: #eaeaea;
+          }
 
-  /* Helper text tone */
-  #zohoSupportWebToCase #zsMaxSizeMessage,
-  #zohoSupportWebToCase #zsMaxLimitMessage { color:#6b7280 !important; }
+          /* Helper text tone */
+          #zohoSupportWebToCase #zsMaxSizeMessage,
+          #zohoSupportWebToCase #zsMaxLimitMessage {
+            color: #6b7280 !important;
+          }
 
-  /* Keep the table centered inside your card */
-  #zohoSupportWebToCase .zsFormClass { margin: 0 auto; }
-`}</style>
+          /* Keep the table centered inside your card */
+          #zohoSupportWebToCase .zsFormClass {
+            margin: 0 auto;
+          }
+        `}</style>
 
-
-
-        {/* Raw form HTML */}
+        {/* Raw form HTML (honeypot field inserted) */}
         <div
           id="zohoSupportWebToCase"
           className="bg-white rounded-2xl p-6 text-center"
@@ -138,6 +266,10 @@ export default function Support() {
   <input type="hidden" id="property(module)" value="Cases"/>
   <input type="hidden" id="dependent_field_values_Cases" value="&#x7b;&quot;JSON_VALUES&quot;&#x3a;&#x7b;&#x7d;,&quot;JSON_SELECT_VALUES&quot;&#x3a;&#x7b;&#x7d;,&quot;JSON_MAP_DEP_LABELS&quot;&#x3a;&#x5b;&#x5d;&#x7d;"/>
   <input type='hidden' name='returnURL' value='https://cinematechgroup.com/support'/>
+
+  <!-- 👇 Honeypot field (bots will fill it, humans won’t) -->
+  <input type="text" name="ctg_website" id="ctg_website" style="display:none" tabindex="-1" autocomplete="off" />
+
   <table border='0' cellspacing='0' class='zsFormClass' style="margin:0 auto;">
     <tr><td colspan='2' class='zsFontClass'><strong>Submit a ticket</strong></td></tr><br>
     <tr><td class='zsFontClass' width='25%' align='left'>Contact Name&nbsp;&nbsp;</td><td align='left' width='75%'><input type='text' maxlength='120' name='Contact Name' class='manfieldbdr'/></td></tr>
@@ -194,6 +326,3 @@ export default function Support() {
     </main>
   );
 }
-
-
-
