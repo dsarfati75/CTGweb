@@ -11,7 +11,7 @@ export default function Header() {
   const [open, setOpen] = React.useState(false);
 
   // Toggle Support Nav Item
-  const supportEnabled = true; // Set to false to hide Support tab
+  const supportEnabled = false; // Set to false to hide Support tab
 
   React.useEffect(() => {
     // If not on homepage, set active based on pathname
@@ -158,3 +158,4 @@ export default function Header() {
     </header>
   );
 }
+
