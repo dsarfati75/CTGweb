@@ -1,4 +1,3 @@
-// app/support/page.tsx
 "use client";
 
 import React from "react";
@@ -17,14 +16,14 @@ export default function Support() {
           Tell us what’s going on and we’ll jump on it.
         </p>
 
-        {/* Zoho scripts */}
+        {/* Load Zoho's script library */}
         <Script
           id="zoho-lib"
           src="https://d17nz991552y2g.cloudfront.net/app/js/jqueryandencoder.ef05974972bf3bca1b87.js"
           strategy="afterInteractive"
         />
 
-        {/* Attach file button script */}
+        {/* Attachment click handler */}
         <Script
           id="ctg-attach-click"
           strategy="afterInteractive"
@@ -34,7 +33,7 @@ export default function Support() {
                 var t = e.target;
                 if (t && t.id === 'zsBrowseAttachment') {
                   var inputs = Array.from(document.querySelectorAll('#zohoSupportWebToCase .wtcuploadinput'));
-                  var current = inputs.find(function(el){ return window.getComputedStyle(el).display !== 'none'; }) || inputs[0];
+                  var current = inputs.find(el => window.getComputedStyle(el).display !== 'none') || inputs[0];
                   if (current) current.click();
                 }
               });
@@ -65,7 +64,24 @@ export default function Support() {
           }}
         />
 
-        {/* Custom CSS overrides */}
+        {/* CAPTCHA loader (fixes React blocking script inside form HTML) */}
+        <Script
+          id="captcha-loader"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('load', function(){
+                setTimeout(function(){
+                  if (typeof zsRegenerateCaptcha === 'function') {
+                    zsRegenerateCaptcha();
+                  }
+                }, 1500);
+              });
+            `,
+          }}
+        />
+
+        {/* Styling overrides */}
         <style jsx global>{`
           #zohoSupportWebToCase textarea,
           #zohoSupportWebToCase input[type='text'],
@@ -76,6 +92,7 @@ export default function Support() {
             border-radius: 6px;
             width: 280px;
           }
+
           #zohoSupportWebToCase input[type='submit'] {
             background: var(--brand-primary, #0f172a);
             color: #fff;
@@ -84,15 +101,29 @@ export default function Support() {
             border: none;
             cursor: pointer;
           }
+
           #zohoSupportWebToCase input[type='submit']:hover {
             filter: brightness(1.05);
           }
+
+          #zohoSupportWebToCase #zsBrowseAttachment {
+            display: inline-block;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            background: #f3f4f6;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            font-weight: 500;
+          }
+
           #zohoSupportWebToCase #zsCaptcha {
             display: flex;
             align-items: center;
             gap: 10px;
             margin: 12px 0;
           }
+
           #zohoSupportWebToCase input[name='zsWebFormCaptchaWord'] {
             width: 150px;
             padding: 8px 10px;
@@ -101,7 +132,7 @@ export default function Support() {
           }
         `}</style>
 
-        {/* Zoho form with CAPTCHA */}
+        {/* Form HTML with working CAPTCHA and honeypot */}
         <div
           id="zohoSupportWebToCase"
           className="bg-white rounded-2xl p-6 text-center"
@@ -135,8 +166,10 @@ export default function Support() {
                   </td></tr>
                   <tr><td>Subject</td><td><input type='text' name='Subject' class='manfieldbdr'/></td></tr>
                   <tr><td>Description</td><td><textarea name='Description' class='manfieldbdr'></textarea></td></tr>
+
+                  <!-- Attachments -->
                   <tr><td>Attachment</td><td>
-                    <span class='wtcuploadfile' id='zsBrowseAttachment'>Attach files</span>
+                    <span id='zsBrowseAttachment'>Attach files</span>
                     <input class='wtcuploadinput' type='file' name='attachment_1' id='zsattachment_1' />
                     <input class='wtcuploadinput' type='file' name='attachment_2' id='zsattachment_2' style='display:none;' />
                     <input class='wtcuploadinput' type='file' name='attachment_3' id='zsattachment_3' style='display:none;' />
@@ -144,15 +177,17 @@ export default function Support() {
                     <input class='wtcuploadinput' type='file' name='attachment_5' id='zsattachment_5' style='display:none;' />
                     <div id='zsFileBrowseAttachments'></div>
                   </td></tr>
+
+                  <!-- CAPTCHA -->
                   <tr><td>Captcha</td><td>
-                    <div id='zsCaptchaLoading'>Loading...</div>
-                    <div id='zsCaptcha' style='display:none;'>
-                      <img src='#' id='zsCaptchaUrl' name='zsCaptchaImage' />
-                      <a href='javascript:;' onclick='zsRegenerateCaptcha()'>Refresh</a>
+                    <div id='zsCaptcha'>
+                      <img id='zsCaptchaUrl' src='https://desk.zoho.com/support/GenerateCaptcha?action=getCaptcha' alt='Captcha' />
+                      <a href='javascript:void(0)' onclick='zsRegenerateCaptcha()'>Reload</a>
                     </div>
-                    <input type='text' name='zsWebFormCaptchaWord' />
+                    <input type='text' name='zsWebFormCaptchaWord' placeholder='Enter CAPTCHA' />
                     <input type='hidden' name='zsCaptchaSrc' value='' />
                   </td></tr>
+
                   <tr>
                     <td colSpan='2' align='center'>
                       <input type='submit' id='zsSubmitButton_1146316000000362410' value='Submit'/>
