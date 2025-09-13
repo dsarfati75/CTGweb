@@ -5,15 +5,16 @@ import Image from "next/image";
 import React from "react";
 import { usePathname } from "next/navigation";
 
-// Toggle this to true or false to show/hide Support in the header
-const SHOW_SUPPORT_LINK = true;
-
 export default function Header() {
   const pathname = usePathname();
   const [active, setActive] = React.useState<string>("home");
   const [open, setOpen] = React.useState(false);
 
+  // Toggle Support Nav Item
+  const supportEnabled = true; // Set to false to hide Support tab
+
   React.useEffect(() => {
+    // If not on homepage, set active based on pathname
     if (pathname !== "/") {
       if (pathname.startsWith("/support")) setActive("support");
       else if (pathname.startsWith("/blog")) setActive("blog");
@@ -21,6 +22,7 @@ export default function Header() {
       return;
     }
 
+    // Only run scroll detection on homepage
     const headerH = 64;
     const ids = ["about", "services", "contact"];
     const sections = ids
@@ -29,6 +31,8 @@ export default function Header() {
 
     const computeActive = () => {
       const y = window.scrollY + headerH + 1;
+
+      // At bottom? mark contact
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2
@@ -102,7 +106,7 @@ export default function Header() {
           <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
             Contact
           </Link>
-          {SHOW_SUPPORT_LINK && (
+          {supportEnabled && (
             <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
               Support
             </Link>
@@ -126,3 +130,31 @@ export default function Header() {
           )}
         </button>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2 text-sm">
+            <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>
+              Home
+            </Link>
+            <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>
+              About
+            </Link>
+            <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>
+              Services
+            </Link>
+            <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
+              Contact
+            </Link>
+            {supportEnabled && (
+              <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
+                Support
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
