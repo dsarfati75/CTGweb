@@ -1,13 +1,6 @@
 'use client';
 import React, { useEffect } from "react";
 
-export default function CinemaTechSitePreview() {
-  const style = {
-    "--brand-primary": "#004080",
-    "--brand-hover": "#0059b3",
-    "--brand-soft"'use client';
-import React, { useEffect } from "react";
-
 export default function CinemaTechHome() {
   const style = {
     "--brand-primary": "#004080",
