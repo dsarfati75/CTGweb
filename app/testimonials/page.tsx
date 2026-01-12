@@ -1,5 +1,3 @@
-import { Quote } from "lucide-react";
-
 const HERO_QUOTE =
   "CinemaTech isn’t just a vendor — they’re a trusted partner we rely on for critical decisions across our venues.";
 
@@ -29,17 +27,33 @@ const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+function QuoteIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M10 11H7.5A2.5 2.5 0 0 0 5 13.5V19h6v-7.5A2.5 2.5 0 0 0 8.5 9H7" />
+      <path d="M19 11h-2.5A2.5 2.5 0 0 0 14 13.5V19h6v-7.5A2.5 2.5 0 0 0 17.5 9H16" />
+    </svg>
+  );
+}
+
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
     <div className="relative h-full rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm backdrop-blur transition hover:shadow-md">
       <div className="flex items-start gap-3">
         <div className="mt-1 rounded-xl border border-white/10 bg-white/5 p-2">
-          <Quote className="h-5 w-5 opacity-80" />
+          <QuoteIcon className="h-5 w-5 opacity-80" />
         </div>
 
-        <div className="text-lg font-semibold leading-snug">
-          {t.headline}
-        </div>
+        <div className="text-lg font-semibold leading-snug">{t.headline}</div>
       </div>
 
       <div className="mt-4 whitespace-pre-line text-sm leading-relaxed opacity-90">
@@ -56,27 +70,22 @@ function TestimonialCard({ t }: { t: Testimonial }) {
 export default function TestimonialsPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 py-16">
-      {/* Page Header */}
       <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Testimonials
-        </h1>
+        <h1 className="text-4xl font-bold tracking-tight">Testimonials</h1>
         <p className="mt-3 text-base opacity-80">
           What our partners say about working with CinemaTech.
         </p>
       </header>
 
-      {/* Hero Quote */}
       <section className="mb-14">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-10 text-center shadow-sm backdrop-blur">
-          <Quote className="mx-auto mb-4 h-8 w-8 opacity-70" />
+          <QuoteIcon className="mx-auto mb-4 h-8 w-8 opacity-70" />
           <p className="mx-auto max-w-3xl text-xl font-semibold leading-relaxed">
             {HERO_QUOTE}
           </p>
         </div>
       </section>
 
-      {/* Testimonial Cards */}
       <section className="grid gap-8 md:grid-cols-2">
         {TESTIMONIALS.map((t, idx) => (
           <TestimonialCard key={idx} t={t} />
