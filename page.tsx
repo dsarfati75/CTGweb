@@ -22,6 +22,7 @@ export default function CinemaTechSitePreview() {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#services" className="hover:text-[var(--brand-primary)]">Services</a>
             <a href="#about" className="hover:text-[var(--brand-primary)]">About</a>
+            <a href="#testimonials" className="hover:text-[var(--brand-primary)]">Testimonials</a>
             <a href="#contact" className="hover:text-[var(--brand-primary)]">Contact</a>
           </nav>
         </div>
@@ -76,7 +77,7 @@ export default function CinemaTechSitePreview() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-16 border-t border-neutral-200">
+      <section id="services" className="py-16 border-t border-neutral-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="mb-8">
             <h2 className="text-3xl font-bold tracking-tight">Services</h2>
@@ -94,7 +95,7 @@ export default function CinemaTechSitePreview() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-16 border-t border-neutral-200">
+      <section id="about" className="py-16 border-t border-neutral-200 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
             <h2 className="text-3xl font-bold tracking-tight">About CinemaTech</h2>
@@ -112,143 +113,4 @@ export default function CinemaTechSitePreview() {
               <div className="px-6 py-4 border-b border-neutral-200"><h3 className="font-semibold">Quick Facts</h3></div>
               <div className="px-6 py-5 text-sm text-neutral-700">
                 <Fact label="Industry" value="Cinema (dine-in & traditional)"/>
-                <Fact label="Core" value="RMM • EDR • Backups • Networks"/>
-                <Fact label="Headquarters" value="Texas, USA"/>
-                <Fact label="Response" value="Same-day for critical incidents"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT (email only) */}
-      <section id="contact" className="py-16 border-t border-neutral-200 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Let’s talk</h2>
-          <p className="mt-4 text-neutral-600">
-            Have a question or need help with your cinema technology?
-            Email us at <a className="underline text-[var(--brand-primary)]" href="mailto:info@cinematechgroup.com">info@cinematechgroup.com</a>
-          </p>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-8 border-t border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-neutral-600">© {new Date().getFullYear()} CinemaTech. All rights reserved.</div>
-          <div className="flex items-center gap-4 text-sm">
-            <a href="#services" className="hover:text-[var(--brand-primary)]">Services</a>
-            <a href="#contact" className="hover:text-[var(--brand-primary)]">Contact</a>
-          </div>
-        </div>
-      </footer>
-
-      <SmokeTests />
-    </div>
-  );
-}
-
-function Feature({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
-  return (
-    <div className="flex items-start gap-3">
-      <div className="p-2 rounded-xl bg-[var(--brand-soft)]">{icon}</div>
-      <div>
-        <div className="font-medium">{title}</div>
-        <div className="text-sm text-neutral-600">{desc}</div>
-      </div>
-    </div>
-  );
-}
-
-function ServiceCard({ icon, title, bullets }: { icon: React.ReactNode; title: string; bullets: string[] }) {
-  return (
-    <div className="rounded-2xl shadow-sm bg-white border border-neutral-200">
-      <div className="px-6 pt-5 pb-3">
-        <div className="flex items-center gap-2 text-lg font-semibold">
-          <span className="p-2 rounded-xl bg-[var(--brand-soft)]">{icon}</span>
-          {title}
-        </div>
-      </div>
-      <div className="px-6 pb-5">
-        <ul className="space-y-2 text-sm text-neutral-700">
-          {bullets.map((b) => (
-            <li key={b} className="flex items-start gap-2"><CheckIcon className="w-4 h-4 mt-0.5"/> {b}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-function Fact({ label, value }: { label: string; value: string }) {
-  return (
-    <div data-fact className="grid grid-cols-[max-content,1fr] items-baseline gap-x-4 py-1.5 border-b last:border-b-0 border-neutral-200/60">
-      <span className="text-neutral-500 whitespace-nowrap">{label}</span>
-      <span data-fact-value className="font-medium text-neutral-800 text-right md:text-left break-words">{value}</span>
-    </div>
-  );
-}
-
-/* --- Inline Icons (no external deps) --- */
-function CheckIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-  );
-}
-function ArrowRight({ className = "w-4 h-4" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-  );
-}
-function ServerIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="8" rx="2"/><rect x="3" y="12" width="18" height="8" rx="2"/><path d="M7 8h0"/><path d="M7 16h0"/></svg>
-  );
-}
-function ShieldIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-  );
-}
-function NetworkIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="9" r="4"/><path d="M8 21h8"/><path d="M12 13v8"/></svg>
-  );
-}
-function CableIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 7V3h6v4"/><path d="M9 21v-4"/><path d="M15 21v-4"/><rect x="6" y="7" width="12" height="6" rx="2"/></svg>
-  );
-}
-function MailIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="5" width="18" height="14" rx="2"/>
-      <path d="M3 7l9 6 9-6"/>
-    </svg>
-  );
-}
-function PhoneIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.1 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.89.32 1.76.59 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.17a2 2 0 0 1 2.11-.45c.84.27 1.71.47 2.6.59A2 2 0 0 1 22 16.92z"/>
-    </svg>
-  );
-}
-
-/* Smoke tests */
-function SmokeTests() {
-  useEffect(() => {
-    const tests: Array<[string, boolean]> = [
-      ["Embedded logo present", !!document.querySelector("img[alt='CinemaTech']")],
-      ["On-prem bullet present", document.body.textContent?.includes("On-prem server migrations") === true],
-      ["Devices copy present", document.body.textContent?.includes("All of your critical devices") === true],
-      ["Services section exists", !!document.getElementById("services")],
-      ["About section exists", !!document.getElementById("about")],
-      ["Contact section exists", !!document.getElementById("contact")],
-      ["Quick Facts has 4 rows", document.querySelectorAll('[data-fact]').length === 4],
-    ];
-    tests.forEach(([name, pass]) => { if (!pass) console.error("SMOKE TEST FAIL:", name); });
-  }, []);
-  return null;
-}
+                <Fact label="Core" value="RMM •
