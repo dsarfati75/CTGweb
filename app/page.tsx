@@ -63,25 +63,7 @@ export default function CinemaTechHome() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="py-16 border-t border-neutral-200 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Services</h2>
-            <p className="mt-2 text-neutral-600">Built for the unique cadence of cinema operations.</p>
-          </header>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <ServiceCard icon={<ServerIcon />} title="Remote Monitoring & Management" bullets={["24/7 alerts", "Patch orchestration", "Asset inventory & reporting"]} />
-            <ServiceCard icon={<ShieldIcon />} title="Endpoint Detection & Response" bullets={["EDR/MDR rollout", "Threat hunting", "Policy hardening"]} />
-            <ServiceCard icon={<NetworkIcon />} title="Network Cleanup & Design" bullets={["Rack remediation", "Wi-Fi tuning", "Firewall best practices"]} />
-            <ServiceCard icon={<CableIcon />} title="Lifecycle & Warranty" bullets={["EOL planning", "Warranty extensions", "Cost-avoidance strategy"]} />
-            <ServiceCard icon={<MailIcon />} title="Backup & Recovery" bullets={["Server backups", "Config snapshots", "Restore runbooks"]} />
-            <ServiceCard icon={<PhoneIcon />} title="On-call & Projects" bullets={["Go-live coverage", "POS migrations", "On-prem server migrations", "Vendor management"]} />
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
+      {/* ABOUT (moved above Services to match header order) */}
       <section id="about" className="py-16 border-t border-neutral-200 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
@@ -105,6 +87,24 @@ export default function CinemaTechHome() {
                 <Fact label="Response" value="Same-day for critical incidents" />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES (now after About) */}
+      <section id="services" className="py-16 border-t border-neutral-200 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <header className="mb-8">
+            <h2 className="text-3xl font-bold tracking-tight">Services</h2>
+            <p className="mt-2 text-neutral-600">Built for the unique cadence of cinema operations.</p>
+          </header>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <ServiceCard icon={<ServerIcon />} title="Remote Monitoring & Management" bullets={["24/7 alerts", "Patch orchestration", "Asset inventory & reporting"]} />
+            <ServiceCard icon={<ShieldIcon />} title="Endpoint Detection & Response" bullets={["EDR/MDR rollout", "Threat hunting", "Policy hardening"]} />
+            <ServiceCard icon={<NetworkIcon />} title="Network Cleanup & Design" bullets={["Rack remediation", "Wi-Fi tuning", "Firewall best practices"]} />
+            <ServiceCard icon={<CableIcon />} title="Lifecycle & Warranty" bullets={["EOL planning", "Warranty extensions", "Cost-avoidance strategy"]} />
+            <ServiceCard icon={<MailIcon />} title="Backup & Recovery" bullets={["Server backups", "Config snapshots", "Restore runbooks"]} />
+            <ServiceCard icon={<PhoneIcon />} title="On-call & Projects" bullets={["Go-live coverage", "POS migrations", "On-prem server migrations", "Vendor management"]} />
           </div>
         </div>
       </section>
@@ -172,10 +172,9 @@ What truly differentiates CinemaTech is the trust. David understands our busines
       {/* FOOTER */}
       <footer className="py-8 border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-sm text-neutral-600">
-            © {new Date().getFullYear()} CinemaTech. All rights reserved.
-          </div>
+          <div className="text-sm text-neutral-600">© {new Date().getFullYear()} CinemaTech. All rights reserved.</div>
           <div className="flex items-center gap-4 text-sm">
+            <a href="#about" className="hover:text-[var(--brand-primary)]">About</a>
             <a href="#services" className="hover:text-[var(--brand-primary)]">Services</a>
             <a href="#testimonials" className="hover:text-[var(--brand-primary)]">Testimonials</a>
             <a href="#contact" className="hover:text-[var(--brand-primary)]">Contact</a>
@@ -337,8 +336,8 @@ function PhoneIcon({ className = "w-5 h-5" }) {
 function SmokeTests() {
   useEffect(() => {
     const tests: Array<[string, boolean]> = [
-      ["Services exists", !!document.getElementById("services")],
       ["About exists", !!document.getElementById("about")],
+      ["Services exists", !!document.getElementById("services")],
       ["Testimonials exists", !!document.getElementById("testimonials")],
       ["Contact exists", !!document.getElementById("contact")],
     ];
