@@ -23,12 +23,12 @@ export default function Header() {
       return;
     }
 
-    // Only run scroll detection on homepage
-    const headerH = 64;
-    const ids = ["about", "services", "testimonials", "contact"];
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
+  const headerH = 64;
+// IMPORTANT: order must match the page from top -> bottom
+const ids = ["services", "about", "testimonials", "contact"];
+const sections = ids
+  .map((id) => document.getElementById(id))
+  .filter((el): el is HTMLElement => !!el);
 
     const computeActive = () => {
       const y = window.scrollY + headerH + 1;
@@ -155,3 +155,4 @@ export default function Header() {
     </header>
   );
 }
+
