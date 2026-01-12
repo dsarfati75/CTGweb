@@ -16,7 +16,8 @@ export default function Header() {
   React.useEffect(() => {
     // If not on homepage, set active based on pathname
     if (pathname !== "/") {
-      if (pathname.startsWith("/support")) setActive("support");
+      if (pathname.startsWith("/testimonials")) setActive("testimonials");
+      else if (pathname.startsWith("/support")) setActive("support");
       else if (pathname.startsWith("/blog")) setActive("blog");
       else setActive("home");
       return;
@@ -94,20 +95,52 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="ml-auto hidden md:flex items-center gap-6 text-sm">
-          <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>
+          <Link
+            href="/"
+            className={linkClass("home")}
+            onClick={() => handleNavClick("home")}
+          >
             Home
           </Link>
-          <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>
+
+          <Link
+            href="/#about"
+            className={linkClass("about")}
+            onClick={() => handleNavClick("about")}
+          >
             About
           </Link>
-          <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>
+
+          <Link
+            href="/#services"
+            className={linkClass("services")}
+            onClick={() => handleNavClick("services")}
+          >
             Services
           </Link>
-          <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
+
+          <Link
+            href="/testimonials"
+            className={linkClass("testimonials")}
+            onClick={() => handleNavClick("testimonials")}
+          >
+            Testimonials
+          </Link>
+
+          <Link
+            href="/#contact"
+            className={linkClass("contact")}
+            onClick={() => handleNavClick("contact")}
+          >
             Contact
           </Link>
+
           {supportEnabled && (
-            <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
+            <Link
+              href="/support"
+              className={linkClass("support")}
+              onClick={() => handleNavClick("support")}
+            >
               Support
             </Link>
           )}
@@ -120,11 +153,25 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
         >
           {open ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           ) : (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
@@ -135,20 +182,52 @@ export default function Header() {
       {open && (
         <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2 text-sm">
-            <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>
+            <Link
+              href="/"
+              className={linkClass("home")}
+              onClick={() => handleNavClick("home")}
+            >
               Home
             </Link>
-            <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>
+
+            <Link
+              href="/#about"
+              className={linkClass("about")}
+              onClick={() => handleNavClick("about")}
+            >
               About
             </Link>
-            <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>
+
+            <Link
+              href="/#services"
+              className={linkClass("services")}
+              onClick={() => handleNavClick("services")}
+            >
               Services
             </Link>
-            <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
+
+            <Link
+              href="/testimonials"
+              className={linkClass("testimonials")}
+              onClick={() => handleNavClick("testimonials")}
+            >
+              Testimonials
+            </Link>
+
+            <Link
+              href="/#contact"
+              className={linkClass("contact")}
+              onClick={() => handleNavClick("contact")}
+            >
               Contact
             </Link>
+
             {supportEnabled && (
-              <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
+              <Link
+                href="/support"
+                className={linkClass("support")}
+                onClick={() => handleNavClick("support")}
+              >
                 Support
               </Link>
             )}
@@ -158,4 +237,3 @@ export default function Header() {
     </header>
   );
 }
-
