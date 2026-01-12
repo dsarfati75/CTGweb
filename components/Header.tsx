@@ -25,7 +25,7 @@ export default function Header() {
 
     // Only run scroll detection on homepage
     const headerH = 64;
-    const ids = ["about", "services", "contact"];
+    const ids = ["about", "services", "testimonials", "contact"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => !!el);
@@ -119,8 +119,9 @@ export default function Header() {
             Services
           </Link>
 
+          {/* Scrolls on homepage; standalone page still exists at /testimonials */}
           <Link
-            href="/testimonials"
+            href="/#testimonials"
             className={linkClass("testimonials")}
             onClick={() => handleNavClick("testimonials")}
           >
@@ -207,7 +208,7 @@ export default function Header() {
             </Link>
 
             <Link
-              href="/testimonials"
+              href="/#testimonials"
               className={linkClass("testimonials")}
               onClick={() => handleNavClick("testimonials")}
             >
