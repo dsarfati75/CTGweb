@@ -23,12 +23,15 @@ export default function Header() {
       return;
     }
 
-  const headerH = 64;
-// IMPORTANT: order must match the page from top -> bottom
-const ids = ["services", "about", "testimonials", "contact"];
-const sections = ids
-  .map((id) => document.getElementById(id))
-  .filter((el): el is HTMLElement => !!el);
+    // Only run scroll detection on homepage
+    const headerH = 64;
+
+    // IMPORTANT: order must match desired nav flow + scroll order
+    const ids = ["about", "services", "testimonials", "contact"];
+
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
 
     const computeActive = () => {
       const y = window.scrollY + headerH + 1;
@@ -98,18 +101,27 @@ const sections = ids
           <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>
             Home
           </Link>
+
           <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>
             About
           </Link>
+
           <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>
             Services
           </Link>
-          <Link href="/#testimonials" className={linkClass("testimonials")} onClick={() => handleNavClick("testimonials")}>
+
+          <Link
+            href="/#testimonials"
+            className={linkClass("testimonials")}
+            onClick={() => handleNavClick("testimonials")}
+          >
             Testimonials
           </Link>
+
           <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
             Contact
           </Link>
+
           {supportEnabled && (
             <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
               Support
@@ -139,11 +151,30 @@ const sections = ids
       {open && (
         <div className="md:hidden border-t border-neutral-200 bg-white/95 backdrop-blur">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2 text-sm">
-            <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>Home</Link>
-            <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>About</Link>
-            <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>Services</Link>
-            <Link href="/#testimonials" className={linkClass("testimonials")} onClick={() => handleNavClick("testimonials")}>Testimonials</Link>
-            <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>Contact</Link>
+            <Link href="/" className={linkClass("home")} onClick={() => handleNavClick("home")}>
+              Home
+            </Link>
+
+            <Link href="/#about" className={linkClass("about")} onClick={() => handleNavClick("about")}>
+              About
+            </Link>
+
+            <Link href="/#services" className={linkClass("services")} onClick={() => handleNavClick("services")}>
+              Services
+            </Link>
+
+            <Link
+              href="/#testimonials"
+              className={linkClass("testimonials")}
+              onClick={() => handleNavClick("testimonials")}
+            >
+              Testimonials
+            </Link>
+
+            <Link href="/#contact" className={linkClass("contact")} onClick={() => handleNavClick("contact")}>
+              Contact
+            </Link>
+
             {supportEnabled && (
               <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
                 Support
@@ -155,4 +186,3 @@ const sections = ids
     </header>
   );
 }
-
