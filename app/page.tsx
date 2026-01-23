@@ -63,7 +63,7 @@ export default function CinemaTechHome() {
         </div>
       </section>
 
-      {/* ABOUT (moved above Services to match header order) */}
+      {/* ABOUT */}
       <section id="about" className="py-16 border-t border-neutral-200 scroll-mt-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-8 items-start">
           <div className="lg:col-span-2">
@@ -77,9 +77,12 @@ export default function CinemaTechHome() {
               <li className="flex gap-2"><CheckIcon className="w-5 h-5 mt-0.5" /> Clear reporting, no black boxes</li>
             </ul>
           </div>
+
           <div className="lg:col-span-1">
             <div className="rounded-2xl shadow-md bg-white border border-neutral-200">
-              <div className="px-6 py-4 border-b border-neutral-200"><h3 className="font-semibold">Quick Facts</h3></div>
+              <div className="px-6 py-4 border-b border-neutral-200">
+                <h3 className="font-semibold">Quick Facts</h3>
+              </div>
               <div className="px-6 py-5 text-sm text-neutral-700">
                 <Fact label="Industry" value="Cinema (dine-in & traditional)" />
                 <Fact label="Core" value="RMM • EDR • Backups • Networks" />
@@ -89,9 +92,27 @@ export default function CinemaTechHome() {
             </div>
           </div>
         </div>
+
+        {/* INDUSTRY RELATIONSHIPS — placed at bottom of About */}
+        <div className="mt-14 border-t border-neutral-200 pt-10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 className="text-2xl font-semibold mb-4">
+              Industry Relationships
+            </h3>
+
+            <p className="text-lg text-neutral-700 leading-relaxed">
+              <strong>
+                CinemaTech supports and collaborates with organizations across the cinema technology ecosystem,
+                including exhibition brands and technology partners such as Alamo Drafthouse, Flix Brewhouse,
+                Majestic Neighborhood Cinema Grill, Cinema Hero Solutions, Ready Theater Systems (RTS),
+                Vista Entertainment Solutions, and Venue Valet.
+              </strong>
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* SERVICES (now after About) */}
+      {/* SERVICES */}
       <section id="services" className="py-16 border-t border-neutral-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <header className="mb-8">
@@ -266,84 +287,4 @@ function Fact({ label, value }: { label: string; value: string }) {
 function QuoteIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M10 11H7.5A2.5 2.5 0 0 0 5 13.5V19h6v-7.5A2.5 2.5 0 0 0 8.5 9H7" />
-      <path d="M19 11h-2.5A2.5 2.5 0 0 0 14 13.5V19h6v-7.5A2.5 2.5 0 0 0 17.5 9H16" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M20 6L9 17l-5-5" />
-    </svg>
-  );
-}
-
-function ServerIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="3" y="4" width="18" height="8" rx="2" />
-      <rect x="3" y="12" width="18" height="8" rx="2" />
-    </svg>
-  );
-}
-
-function ShieldIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
-
-function NetworkIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="9" r="4" />
-      <path d="M8 21h8" />
-      <path d="M12 13v8" />
-    </svg>
-  );
-}
-
-function CableIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="6" y="7" width="12" height="6" rx="2" />
-    </svg>
-  );
-}
-
-function MailIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="M3 7l9 6 9-6" />
-    </svg>
-  );
-}
-
-function PhoneIcon({ className = "w-5 h-5" }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07" />
-    </svg>
-  );
-}
-
-/* Smoke Tests */
-function SmokeTests() {
-  useEffect(() => {
-    const tests: Array<[string, boolean]> = [
-      ["About exists", !!document.getElementById("about")],
-      ["Services exists", !!document.getElementById("services")],
-      ["Testimonials exists", !!document.getElementById("testimonials")],
-      ["Contact exists", !!document.getElementById("contact")],
-    ];
-    tests.forEach(([name, pass]) => {
-      if (!pass) console.error("SMOKE TEST FAIL:", name);
-    });
-  }, []);
-  return null;
-}
+      <path d="M10 11H7.5A2.5 2.5 0 0 0 5 13.5V19h6v-7.5A2.5 2.5 0 0
