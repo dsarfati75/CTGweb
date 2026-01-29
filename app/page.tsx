@@ -158,7 +158,7 @@ export default function CinemaTechHome() {
                 "David understands how downtime affects not just systems, but guest experience, staff efficiency, and revenue. He communicates clearly, plans ahead, and brings structure to what used to feel reactive and fragmented.\n\n" +
                 "What really sets CinemaTech apart is the relationship. David isn’t just a vendor we call when something breaks — he’s someone we trust, bounce ideas off of, and rely on when making important technology decisions. He’s invested in our success and treats our business with genuine care and accountability. That level of partnership is rare."
               }
-              attribution="Managing Partner, Multi-Location Dine-In Cinema Operator"
+              attribution="Joseph E. Managing Partner, Alamo Drafthouse Franchise Owner"
             />
 
             <TestimonialCard
@@ -168,7 +168,7 @@ export default function CinemaTechHome() {
                 "David has helped us modernize our infrastructure, improve visibility across our systems, and maintain stable uptime across our venues — all while communicating clearly and keeping initiatives organized and on track.\n\n" +
                 "What truly differentiates CinemaTech is the trust. David understands our business at a strategic level and consistently provides thoughtful guidance, not just technical fixes. He’s someone we respect personally and professionally, and that trust matters when you’re making decisions that directly impact operations and guest experience."
               }
-              attribution="Operations Leadership, Multi-Venue Cinema Group"
+              attribution="Craig P. CEO/Partner, Majestic Neighborhood Cinema Grill"
             />
           </div>
         </div>
@@ -365,3 +365,4 @@ function SmokeTests() {
   }, []);
   return null;
 }
+
