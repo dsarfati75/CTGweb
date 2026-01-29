@@ -87,7 +87,7 @@ export default function DicsSummitPage() {
                 rel="noreferrer"
                 className="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
               >
-                Book your 15-minute intake call
+                Book your 30-minute intake call
               </a>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function DicsSummitPage() {
               rel="noreferrer"
               className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-slate-50"
             >
-              Book 15-minute intake call
+              Book 30-minute intake call
             </a>
           </div>
         </div>
@@ -150,3 +150,4 @@ export default function DicsSummitPage() {
     </main>
   );
 }
+
