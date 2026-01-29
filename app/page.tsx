@@ -246,12 +246,22 @@ function ServiceCard({ icon, title, bullets }: { icon: React.ReactNode; title: s
 function TestimonialCard({
   headline,
   body,
+  name,
+  title,
   attribution,
 }: {
   headline: string;
   body: string;
-  attribution: string;
+
+  // New signature style (preferred)
+  name?: string;
+  title?: string;
+
+  // Backwards compatibility (optional)
+  attribution?: string;
 }) {
+  const hasNewAttribution = Boolean(name || title);
+
   return (
     <div className="rounded-2xl shadow-sm bg-white border border-neutral-200 h-full">
       <div className="px-6 pt-6 pb-3">
@@ -262,15 +272,17 @@ function TestimonialCard({
           <h3 className="text-lg font-semibold leading-snug">{headline}</h3>
         </div>
       </div>
+
       <div className="px-6 pb-6">
-        <p className="whitespace-pre-line text-sm leading-relaxed text-neutral-700">{body}</p>
-        <div className="mt-6 border-t border-neutral-200 pt-4 text-sm font-medium text-neutral-600">
-          — {attribution}
-        </div>
-      </div>
-    </div>
-  );
-}
+        <p className="whitespace-pre-line text-sm leading-relaxed text-neutral-700">
+          {body}
+        </p>
+
+        <div className="mt-6 border-t border-neutral-200 pt-4">
+          {hasNewAttribution ? (
+            <>
+              {name ? (
+
 
 function Fact({ label, value }: { label: string; value: string }) {
   return (
@@ -367,5 +379,6 @@ function SmokeTests() {
   }, []);
   return null;
 }
+
 
 
