@@ -122,6 +122,43 @@ export default function DicsSummitPage() {
         </div>
       </section>
 
+      {/* Testimonials */}
+<section className="mx-auto max-w-5xl px-6 py-12">
+  <h2 className="text-2xl font-semibold">Trusted by Cinema Operators</h2>
+
+  <div className="mt-6 grid gap-6 md:grid-cols-2">
+    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <p className="text-sm text-slate-700 leading-relaxed">
+        “CinemaTech helped us standardize and stabilize IT across multiple dine-in
+        locations, reducing outages and operational surprises. David understands
+        how downtime impacts guests, staff, and revenue — and plans ahead so
+        problems don’t become emergencies.”
+      </p>
+      <div className="mt-4 text-sm font-semibold text-slate-900">
+        — Joseph Edwards
+      </div>
+      <div className="text-xs text-slate-600">
+        Alamo Drafthouse Franchise Owner
+      </div>
+    </div>
+
+    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <p className="text-sm text-slate-700 leading-relaxed">
+        “CinemaTech has improved visibility and uptime across all our locations
+        while keeping projects organized and on track. David understands
+        operational risk and provides guidance we trust, not just technical
+        fixes.”
+      </p>
+      <div className="mt-4 text-sm font-semibold text-slate-900">
+        — Craig Paschich
+      </div>
+      <div className="text-xs text-slate-600">
+        CEO & Partner, Majestic Neighborhood Cinema Grill
+      </div>
+    </div>
+  </div>
+</section>
+
       {/* Request */}
       <section id="request" className="border-t bg-slate-50">
         <div className="mx-auto max-w-5xl px-6 py-12">
@@ -153,3 +190,4 @@ export default function DicsSummitPage() {
     </main>
   );
 }
+
