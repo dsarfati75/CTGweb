@@ -141,7 +141,7 @@ export default function Header() {
               className={summitButtonClass}
               onClick={() => handleNavClick("dics-summit")}
             >
-              Summit IT Health Check
+              Dine-In Cinema Summit IT Health Check
             </Link>
           )}
         </nav>
@@ -213,4 +213,5 @@ export default function Header() {
     </header>
   );
 }
+
 
