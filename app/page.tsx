@@ -128,51 +128,53 @@ export default function CinemaTechHome() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section id="testimonials" className="py-16 border-t border-neutral-200 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Testimonials</h2>
-            <p className="mt-2 text-neutral-600">
-              Trusted by multi-location cinema operators who need reliability, security, and a true partner.
-            </p>
-          </header>
+<section id="testimonials" className="py-16 border-t border-neutral-200 scroll-mt-24">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="mb-8">
+      <h2 className="text-3xl font-bold tracking-tight">Testimonials</h2>
+      <p className="mt-2 text-neutral-600">
+        Trusted by multi-location cinema operators who need reliability, security, and a true partner.
+      </p>
+    </header>
 
-          <div className="mb-10 rounded-2xl shadow-sm bg-white border border-neutral-200">
-            <div className="px-6 py-8">
-              <div className="mx-auto max-w-3xl text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--brand-soft)]">
-                  <QuoteIcon className="h-6 w-6" />
-                </div>
-                <p className="text-xl font-semibold leading-relaxed">
-                  CinemaTech isn’t just a vendor — they’re a trusted partner we rely on for critical decisions across our venues.
-                </p>
-              </div>
-            </div>
+    <div className="mb-10 rounded-2xl shadow-sm bg-white border border-neutral-200">
+      <div className="px-6 py-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--brand-soft)]">
+            <QuoteIcon className="h-6 w-6" />
           </div>
-
-          <div className="grid gap-5 md:grid-cols-2">
-            <TestimonialCard
-              headline="CinemaTech has been an outstanding partner for our business."
-              body={
-                "Operating multiple dine-in cinema locations means our technology has to be consistent, secure, and reliable every day. CinemaTech has been an outstanding partner in helping us standardize our infrastructure, stabilize our environments, and reduce operational surprises across our venues.\n\n" +
-                "David understands how downtime affects not just systems, but guest experience, staff efficiency, and revenue. He communicates clearly, plans ahead, and brings structure to what used to feel reactive and fragmented.\n\n" +
-                "What really sets CinemaTech apart is the relationship. David isn’t just a vendor we call when something breaks — he’s someone we trust, bounce ideas off of, and rely on when making important technology decisions. He’s invested in our success and treats our business with genuine care and accountability. That level of partnership is rare."
-              }
-              attribution="Joseph E. Managing Partner, Alamo Drafthouse Franchise Owner"
-            />
-
-            <TestimonialCard
-              headline="Reliable technology is critical in our business — and CinemaTech consistently delivers."
-              body={
-                "Managing technology across multiple dine-in cinema locations requires consistency, strong security posture, and a partner who understands operational risk. CinemaTech delivers exactly what you want in a technology partner: reliability, accountability, and deep expertise.\n\n" +
-                "David has helped us modernize our infrastructure, improve visibility across our systems, and maintain stable uptime across our venues — all while communicating clearly and keeping initiatives organized and on track.\n\n" +
-                "What truly differentiates CinemaTech is the trust. David understands our business at a strategic level and consistently provides thoughtful guidance, not just technical fixes. He’s someone we respect personally and professionally, and that trust matters when you’re making decisions that directly impact operations and guest experience."
-              }
-              attribution="Craig P. CEO/Partner, Majestic Neighborhood Cinema Grill"
-            />
-          </div>
+          <p className="text-xl font-semibold leading-relaxed">
+            CinemaTech isn’t just a vendor — they’re a trusted partner we rely on for critical decisions across our venues.
+          </p>
         </div>
-      </section>
+      </div>
+    </div>
+
+    <div className="grid gap-5 md:grid-cols-2">
+      <TestimonialCard
+        headline="CinemaTech has been an outstanding partner for our business."
+        body={
+          "Operating multiple dine-in cinema locations means our technology has to be consistent, secure, and reliable every day. CinemaTech has been an outstanding partner in helping us standardize our infrastructure, stabilize our environments, and reduce operational surprises across our venues.\n\n" +
+          "David understands how downtime affects not just systems, but guest experience, staff efficiency, and revenue. He communicates clearly, plans ahead, and brings structure to what used to feel reactive and fragmented.\n\n" +
+          "What really sets CinemaTech apart is the relationship. David isn’t just a vendor we call when something breaks — he’s someone we trust, bounce ideas off of, and rely on when making important technology decisions. He’s invested in our success and treats our business with genuine care and accountability. That level of partnership is rare."
+        }
+        name="Joseph E."
+        title="Managing Partner, Alamo Drafthouse Franchise Owner"
+      />
+
+      <TestimonialCard
+        headline="Reliable technology is critical in our business — and CinemaTech consistently delivers."
+        body={
+          "Managing technology across multiple dine-in cinema locations requires consistency, strong security posture, and a partner who understands operational risk. CinemaTech delivers exactly what you want in a technology partner: reliability, accountability, and deep expertise.\n\n" +
+          "David has helped us modernize our infrastructure, improve visibility across our systems, and maintain stable uptime across our venues — all while communicating clearly and keeping initiatives organized and on track.\n\n" +
+          "What truly differentiates CinemaTech is the trust. David understands our business at a strategic level and consistently provides thoughtful guidance, not just technical fixes. He’s someone we respect personally and professionally, and that trust matters when you’re making decisions that directly impact operations and guest experience."
+        }
+        name="Craig P."
+        title="CEO & Partner, Majestic Neighborhood Cinema Grill"
+      />
+    </div>
+  </div>
+</section>
 
       {/* CONTACT */}
       <section id="contact" className="py-16 border-t border-neutral-200 bg-white scroll-mt-24">
@@ -365,4 +367,5 @@ function SmokeTests() {
   }, []);
   return null;
 }
+
 
