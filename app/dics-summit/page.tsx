@@ -41,7 +41,7 @@ export default function DicsSummitPage() {
                 </a>
 
                 <a
-                  href="mailto:info@cinematechgroup.com?subject=Summit%20Assessment%20Request"
+                  href="mailto:info@cinematechgroup.com?subject=DICS%20Summit%20Assessment%20Request"
                   className="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
                 >
                   Email to schedule
@@ -79,6 +79,16 @@ export default function DicsSummitPage() {
                 No obligation. If you like the findings, we can discuss ongoing
                 monitoring and security coverage.
               </div>
+
+              {/* Booking button */}
+              <a
+                href="https://outlook.office.com/bookwithme/user/3df605c66d794ca2a5c81fe59a825f40%40cinematechgroup.com?anonymous&ismsaljsauthenabled=true"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+              >
+                Book your 15-minute intake call
+              </a>
             </div>
           </div>
         </div>
@@ -114,23 +124,25 @@ export default function DicsSummitPage() {
         <div className="mx-auto max-w-5xl px-6 py-12">
           <h2 className="text-2xl font-semibold">Request the free assessment</h2>
           <p className="mt-2 max-w-2xl text-sm text-slate-700">
-            Email us or use the contact form on our site and reference
-            <strong> “DICS Summit Assessment.”</strong>
+            Email us or book directly using the button above and reference{" "}
+            <strong>“DICS Summit Assessment.”</strong>
           </p>
 
           <div className="mt-6 flex flex-wrap gap-4">
             <a
-              href="mailto:info@cinematechgroup.com?subject=DICS%20Summit%20Assessment"
+              href="mailto:info@cinematechgroup.com?subject=DICS%20Summit%20Assessment%20Request"
               className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
             >
               Email info@cinematechgroup.com
             </a>
 
             <a
-              href="/contact"
+              href="https://outlook.office.com/bookwithme/user/3df605c66d794ca2a5c81fe59a825f40%40cinematechgroup.com?anonymous&ismsaljsauthenabled=true"
+              target="_blank"
+              rel="noreferrer"
               className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold hover:bg-slate-50"
             >
-              Use contact form
+              Book 15-minute intake call
             </a>
           </div>
         </div>
