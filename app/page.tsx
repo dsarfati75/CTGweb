@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect } from "react";
 
 export default function CinemaTechHome() {
@@ -93,7 +94,6 @@ export default function CinemaTechHome() {
           </div>
         </div>
 
-        {/* INDUSTRY RELATIONSHIPS — placed at bottom of About */}
         <div className="mt-14 border-t border-neutral-200 pt-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 className="text-2xl font-semibold mb-4">Industry Relationships</h3>
@@ -128,53 +128,53 @@ export default function CinemaTechHome() {
       </section>
 
       {/* TESTIMONIALS */}
-<section id="testimonials" className="py-16 border-t border-neutral-200 scroll-mt-24">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <header className="mb-8">
-      <h2 className="text-3xl font-bold tracking-tight">Testimonials</h2>
-      <p className="mt-2 text-neutral-600">
-        Trusted by multi-location cinema operators who need reliability, security, and a true partner.
-      </p>
-    </header>
+      <section id="testimonials" className="py-16 border-t border-neutral-200 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <header className="mb-8">
+            <h2 className="text-3xl font-bold tracking-tight">Testimonials</h2>
+            <p className="mt-2 text-neutral-600">
+              Trusted by multi-location cinema operators who need reliability, security, and a true partner.
+            </p>
+          </header>
 
-    <div className="mb-10 rounded-2xl shadow-sm bg-white border border-neutral-200">
-      <div className="px-6 py-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--brand-soft)]">
-            <QuoteIcon className="h-6 w-6" />
+          <div className="mb-10 rounded-2xl shadow-sm bg-white border border-neutral-200">
+            <div className="px-6 py-8">
+              <div className="mx-auto max-w-3xl text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--brand-soft)]">
+                  <QuoteIcon className="h-6 w-6" />
+                </div>
+                <p className="text-xl font-semibold leading-relaxed">
+                  CinemaTech isn’t just a vendor — they’re a trusted partner we rely on for critical decisions across our venues.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="text-xl font-semibold leading-relaxed">
-            CinemaTech isn’t just a vendor — they’re a trusted partner we rely on for critical decisions across our venues.
-          </p>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <TestimonialCard
+              headline="CinemaTech has been an outstanding partner for our business."
+              body={
+                "Operating multiple dine-in cinema locations means our technology has to be consistent, secure, and reliable every day. CinemaTech has been an outstanding partner in helping us standardize our infrastructure, stabilize our environments, and reduce operational surprises across our venues.\n\n" +
+                "David understands how downtime affects not just systems, but guest experience, staff efficiency, and revenue. He communicates clearly, plans ahead, and brings structure to what used to feel reactive and fragmented.\n\n" +
+                "What really sets CinemaTech apart is the relationship. David isn’t just a vendor we call when something breaks — he’s someone we trust, bounce ideas off of, and rely on when making important technology decisions. He’s invested in our success and treats our business with genuine care and accountability. That level of partnership is rare."
+              }
+              name="Joseph E."
+              title="Managing Partner, Alamo Drafthouse Franchise Owner"
+            />
+
+            <TestimonialCard
+              headline="Reliable technology is critical in our business — and CinemaTech consistently delivers."
+              body={
+                "Managing technology across multiple dine-in cinema locations requires consistency, strong security posture, and a partner who understands operational risk. CinemaTech delivers exactly what you want in a technology partner: reliability, accountability, and deep expertise.\n\n" +
+                "David has helped us modernize our infrastructure, improve visibility across our systems, and maintain stable uptime across our venues — all while communicating clearly and keeping initiatives organized and on track.\n\n" +
+                "What truly differentiates CinemaTech is the trust. David understands our business at a strategic level and consistently provides thoughtful guidance, not just technical fixes. He’s someone we respect personally and professionally, and that trust matters when you’re making decisions that directly impact operations and guest experience."
+              }
+              name="Craig P."
+              title="CEO & Partner, Majestic Neighborhood Cinema Grill"
+            />
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div className="grid gap-5 md:grid-cols-2">
-      <TestimonialCard
-        headline="CinemaTech has been an outstanding partner for our business."
-        body={
-          "Operating multiple dine-in cinema locations means our technology has to be consistent, secure, and reliable every day. CinemaTech has been an outstanding partner in helping us standardize our infrastructure, stabilize our environments, and reduce operational surprises across our venues.\n\n" +
-          "David understands how downtime affects not just systems, but guest experience, staff efficiency, and revenue. He communicates clearly, plans ahead, and brings structure to what used to feel reactive and fragmented.\n\n" +
-          "What really sets CinemaTech apart is the relationship. David isn’t just a vendor we call when something breaks — he’s someone we trust, bounce ideas off of, and rely on when making important technology decisions. He’s invested in our success and treats our business with genuine care and accountability. That level of partnership is rare."
-        }
-        name="Joseph E."
-        title="Managing Partner, Alamo Drafthouse Franchise Owner"
-      />
-
-      <TestimonialCard
-        headline="Reliable technology is critical in our business — and CinemaTech consistently delivers."
-        body={
-          "Managing technology across multiple dine-in cinema locations requires consistency, strong security posture, and a partner who understands operational risk. CinemaTech delivers exactly what you want in a technology partner: reliability, accountability, and deep expertise.\n\n" +
-          "David has helped us modernize our infrastructure, improve visibility across our systems, and maintain stable uptime across our venues — all while communicating clearly and keeping initiatives organized and on track.\n\n" +
-          "What truly differentiates CinemaTech is the trust. David understands our business at a strategic level and consistently provides thoughtful guidance, not just technical fixes. He’s someone we respect personally and professionally, and that trust matters when you’re making decisions that directly impact operations and guest experience."
-        }
-        name="Craig P."
-        title="CEO & Partner, Majestic Neighborhood Cinema Grill"
-      />
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* CONTACT */}
       <section id="contact" className="py-16 border-t border-neutral-200 bg-white scroll-mt-24">
@@ -243,23 +243,16 @@ function ServiceCard({ icon, title, bullets }: { icon: React.ReactNode; title: s
   );
 }
 
-function TestimonialCard({
-  headline,
-  body,
-  name,
-  title,
-  attribution,
-}: {
+type TestimonialCardProps = {
   headline: string;
   body: string;
-
-  // New signature style (preferred)
   name?: string;
   title?: string;
-
-  // Backwards compatibility (optional)
   attribution?: string;
-}) {
+};
+
+function TestimonialCard(props: TestimonialCardProps) {
+  const { headline, body, name, title, attribution } = props;
   const hasNewAttribution = Boolean(name || title);
 
   return (
@@ -282,11 +275,28 @@ function TestimonialCard({
           {hasNewAttribution ? (
             <>
               {name ? (
-
+                <div className="text-sm font-semibold text-slate-900">
+                  — {name}
+                </div>
+              ) : null}
+              {title ? (
+                <div className="text-xs text-slate-600">{title}</div>
+              ) : null}
+            </>
+          ) : attribution ? (
+            <div className="text-sm font-medium text-neutral-600">
+              — {attribution}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function Fact({ label, value }: { label: string; value: string }) {
   return (
-    <div data-fact className="grid grid-cols-[max-content,1fr] items-baseline gap-x-4 py-1.5 border-b last:border-b-0 border-neutral-200/60">
+    <div className="grid grid-cols-[max-content,1fr] items-baseline gap-x-4 py-1.5 border-b last:border-b-0 border-neutral-200/60">
       <span className="text-neutral-500 whitespace-nowrap">{label}</span>
       <span className="font-medium text-neutral-800 break-words">{value}</span>
     </div>
@@ -379,6 +389,3 @@ function SmokeTests() {
   }, []);
   return null;
 }
-
-
-
