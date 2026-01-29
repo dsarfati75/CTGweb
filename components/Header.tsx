@@ -13,10 +13,14 @@ export default function Header() {
   // Toggle Support Nav Item
   const supportEnabled = false;
 
+  // Toggle Summit CTA (turn off after the event)
+  const summitEnabled = true;
+
   React.useEffect(() => {
     // If not on homepage, set active based on pathname
     if (pathname !== "/") {
-      if (pathname.startsWith("/testimonials")) setActive("testimonials");
+      if (pathname.startsWith("/dics-summit")) setActive("dics-summit");
+      else if (pathname.startsWith("/testimonials")) setActive("testimonials");
       else if (pathname.startsWith("/support")) setActive("support");
       else if (pathname.startsWith("/blog")) setActive("blog");
       else setActive("home");
@@ -78,6 +82,9 @@ export default function Header() {
         : "text-neutral-700 hover:text-[var(--brand-primary)]",
     ].join(" ");
 
+  const summitButtonClass =
+    "inline-flex items-center rounded-md bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-800";
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-neutral-200 shadow-sm">
       <div className="max-w-7xl mx-auto h-16 px-4 sm:px-6 lg:px-8 flex items-center">
@@ -125,6 +132,16 @@ export default function Header() {
           {supportEnabled && (
             <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
               Support
+            </Link>
+          )}
+
+          {summitEnabled && (
+            <Link
+              href="/dics-summit"
+              className={summitButtonClass}
+              onClick={() => handleNavClick("dics-summit")}
+            >
+              Summit IT Health Check
             </Link>
           )}
         </nav>
@@ -178,6 +195,16 @@ export default function Header() {
             {supportEnabled && (
               <Link href="/support" className={linkClass("support")} onClick={() => handleNavClick("support")}>
                 Support
+              </Link>
+            )}
+
+            {summitEnabled && (
+              <Link
+                href="/dics-summit"
+                className="mt-2 inline-flex items-center justify-center rounded-md bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+                onClick={() => handleNavClick("dics-summit")}
+              >
+                Summit IT Health Check
               </Link>
             )}
           </div>
