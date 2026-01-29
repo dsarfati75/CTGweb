@@ -204,7 +204,7 @@ export default function Header() {
                 className="mt-2 inline-flex items-center justify-center rounded-md bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
                 onClick={() => handleNavClick("dics-summit")}
               >
-                Summit IT Health Check
+                Dine-In Cinema Summit IT Health Check
               </Link>
             )}
           </div>
@@ -213,3 +213,4 @@ export default function Header() {
     </header>
   );
 }
+
