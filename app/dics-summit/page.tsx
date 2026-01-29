@@ -133,7 +133,7 @@ export default function DicsSummitPage() {
               plans ahead so problems don’t become emergencies.”
             </p>
             <div className="mt-4 text-sm font-semibold text-slate-900">
-              — Joseph Edwards
+              — Joseph E.
             </div>
             <div className="text-xs text-slate-600">
               Alamo Drafthouse Franchise Owner
@@ -148,7 +148,7 @@ export default function DicsSummitPage() {
               just technical fixes.”
             </p>
             <div className="mt-4 text-sm font-semibold text-slate-900">
-              — Craig Paschich
+              — Craig P.
             </div>
             <div className="text-xs text-slate-600">
               CEO & Partner, Majestic Neighborhood Cinema Grill
@@ -190,3 +190,4 @@ export default function DicsSummitPage() {
     </main>
   );
 }
+
