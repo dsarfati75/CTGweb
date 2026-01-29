@@ -3,7 +3,7 @@
 export const metadata = {
   title: "Free Summit Attendee IT Health Check | CinemaTech",
   description:
-    "Dine-In Cinema Summit attendees: request a free cinema-focused IT health check covering monitoring, security, backups, and network/POS readiness.",
+    "Dine-In Cinema Summit attendees: request a free cinema-focused IT health check covering server health, patching, backups, and operational risk.",
 };
 
 export default function DicsSummitPage() {
@@ -22,14 +22,15 @@ export default function DicsSummitPage() {
               <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
                 Free Cinema IT Health Check
                 <span className="block text-slate-600">
-                  Security + Uptime Focused
+                  Server Health + Uptime Risk Focused
                 </span>
               </h1>
 
               <p className="mt-4 text-base leading-relaxed text-slate-700">
                 Built specifically for independent cinema operators. We’ll review
-                your monitoring, endpoint security, backups, and network/POS
-                readiness and send a short prioritized report.
+                server health and patch status using monitoring tools, discuss your
+                backup and access practices, and provide prioritized
+                recommendations to reduce outages and security risk.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -52,7 +53,7 @@ export default function DicsSummitPage() {
                 <div className="rounded-xl border bg-white p-4">
                   <div className="font-semibold">Deliverable</div>
                   <div className="mt-1 text-slate-600">
-                    Findings + prioritized recommendations
+                    Findings summary + prioritized next steps
                   </div>
                 </div>
                 <div className="rounded-xl border bg-white p-4">
@@ -68,16 +69,18 @@ export default function DicsSummitPage() {
             <div className="rounded-2xl border bg-white p-6 shadow-sm">
               <h2 className="text-lg font-semibold">What’s included</h2>
               <ul className="mt-4 space-y-3 text-sm text-slate-700">
-                <li>• Endpoint security & patch posture snapshot</li>
-                <li>• Backup & recovery readiness check</li>
-                <li>• Network/POS segmentation sanity review (PCI-aware)</li>
-                <li>• Remote access & admin exposure scan</li>
-                <li>• Single points of failure + quick wins</li>
+                <li>• Server hardware & OS health snapshot (via monitoring agent)</li>
+                <li>• Patch and basic security posture snapshot</li>
+                <li>• Backup agent status and recovery readiness discussion</li>
+                <li>• Operational single points of failure identification</li>
+                <li>• Remote access and vendor access practices discussion</li>
+                <li>• Prioritized recommendations and next steps</li>
               </ul>
 
               <div className="mt-6 rounded-xl bg-slate-50 p-4 text-sm text-slate-700">
-                No obligation. If you like the findings, we can discuss ongoing
-                monitoring and security coverage.
+                This is a lightweight operational assessment — not a full security
+                audit or compliance review — designed to quickly highlight risk and
+                stability gaps in cinema IT environments.
               </div>
 
               {/* Booking button */}
@@ -124,8 +127,8 @@ export default function DicsSummitPage() {
         <div className="mx-auto max-w-5xl px-6 py-12">
           <h2 className="text-2xl font-semibold">Request the free assessment</h2>
           <p className="mt-2 max-w-2xl text-sm text-slate-700">
-            Email us or book directly using the button above and reference{" "}
-            <strong>“DICS Summit Assessment.”</strong>
+            Book a 30-minute intake call using the button above or email us and
+            reference <strong>“DICS Summit Assessment.”</strong>
           </p>
 
           <div className="mt-6 flex flex-wrap gap-4">
@@ -150,4 +153,3 @@ export default function DicsSummitPage() {
     </main>
   );
 }
-
